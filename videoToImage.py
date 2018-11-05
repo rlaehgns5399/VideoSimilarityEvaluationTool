@@ -140,6 +140,8 @@ def FLANN_ORB(img1, img2):
         cv2.imshow('Feature Matching(FLANN_ORB)', res)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
+    print(len(good))
+    return len(good)
 
 while(video.isOpened()):
     if ret != False:
@@ -163,7 +165,11 @@ while(video.isOpened()):
         elif args.method == "FLANN_SIFT":
             FLANN_SIFT(grayOrigin, grayCompare)
         elif args.method == "FLANN_ORB":
-            FLANN_ORB(grayOrigin, grayCompare)
+            score = FLANN_ORB(grayOrigin, grayCompare)
+            if score <= 10 * args.factor:
+                grayOrigin = grayCompare
+                if args.debug == "Y":
+                    print("The origin is changed to frame " + str(count) + "/" + str(length));
     else:
         break
 
