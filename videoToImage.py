@@ -3,6 +3,7 @@ import os
 import argparse
 import numpy as np
 from skimage.measure import compare_ssim
+import time
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--file", help="Video file i.e) xyz.mp4")
@@ -25,6 +26,8 @@ ret = None
 image = None
 grayOrigin = None
 length = None
+
+start_time = time.time()
 
 if video.isOpened():
     length = int(video.get(cv2.CAP_PROP_FRAME_COUNT))

@@ -66,3 +66,19 @@ python videoToImage --file aaa.mp4 --method (SSIM, ORB, SIFT, FLANN_SIFT, FLANN_
 ```
 
 but ORB,SIFT,FLANN_SIFT,FLANN_ORB is implemented. but i didnt make extract code!
+
+# FindMostSimilarityScene.py
+
+First, It will find starting point(frame) of Original video based on target video(first frame).
+
+Second, it will calculate max SSIM score & frame index.
+
+Third, With starting point(frame), Caculate SSIM again with tolerance. it will devide similar or not.
+
+Fourth, Count number of result. and Decide how similar they are.
+
+```
+python FindMostSimilarityScene.py --o origin.mp4 --t target.mp4 --debug (Y or N) --resize (Y or N)
+```
+
+- resize option makes images 32x32.
