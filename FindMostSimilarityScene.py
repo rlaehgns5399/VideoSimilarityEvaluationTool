@@ -9,6 +9,7 @@ parser.add_argument("--t", help="video file what you want to evaluate")
 parser.add_argument("--method", help="how to compare? SSIM, ORB, SIFT, FLANN_SIFT, FLANN_ORB, default=SSIM", default="SSIM")
 parser.add_argument("--debug", help="if Y, shows print. otherwise: dont show anything. default: Y", default="Y")
 parser.add_argument("--resize", help="each image is converted to 32x32", default="N")
+parser.add_argument("--tolerance", help="define tolerance for SSIM", default=0.8)
 FLAG = parser.parse_args()
 
 origin_video = cv2.VideoCapture(FLAG.o)
@@ -90,7 +91,7 @@ if FLAG.debug == "Y":
 origin_video.set(1, saved_frame)
 eval_video = cv2.VideoCapture(FLAG.t)
 
-tolerance = 0.8
+tolerance = FLAG.tolerance
 similar_counter = 0
 
 while origin_video.isOpened():
