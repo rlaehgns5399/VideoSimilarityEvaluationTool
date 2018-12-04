@@ -20,6 +20,7 @@ while(vid.isOpened()):
     cv2.imwrite(dir + "/frame%d.jpg" % i, image)
     i += 1
 
-inception_cifar = "/home/team4_jjs/DoHun/git/GoogLeNet-Inception-tensorflow/examples/inception_cifar.py"
-result = subprocess.check_output("python " + inception_cifar + " --predict --im_name .jpg")
-print(str(result))
+inception_cifar = "inception_cifar.py"
+result = subprocess.check_output("python " + inception_cifar + " --predict --im_name .jpg", shell=True)
+
+
