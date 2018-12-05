@@ -2,13 +2,16 @@ import argparse
 import cv2
 import os
 import subprocess
+import time
+
+
 parser = argparse.ArgumentParser()
 parser.add_argument("-o", type=str, help="video file")
 FLAG = parser.parse_args()
-
 threshold = 0.8
-
 dir = "./video"
+start_time = time.time()
+
 if not os.path.isdir(dir):
     os.mkdir(dir)
 
@@ -53,3 +56,5 @@ maxitem = value_list[0]
 for list_item in dic:
     if dic[list_item] == maxitem:
         print("this is classified {}, Similarity: {:.04f}".format(list_item, maxitem / data_count))
+
+print("elapsed time: " + str(time.time() - start_time) + "secs")
