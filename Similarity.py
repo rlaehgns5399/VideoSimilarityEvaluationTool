@@ -21,7 +21,8 @@ while(vid.isOpened()):
     i += 1
 
 inception_cifar = "inception_cifar.py"
-result = subprocess.check_output("python " + inception_cifar + " --predict --im_name .jpg", shell=True)
-parsing_text = result.split("===============================\n")
+result = subprocess.check_output("python " + inception_cifar + " --load 99 --predict --im_name .jpg", shell=True)
+parsing_text = result.decode('utf8').split("===============================")
+
 for a in parsing_text:
-    print(a)
+    print(a.strip("\n"))
