@@ -82,3 +82,15 @@ python FindMostSimilarityScene.py --o origin.mp4 --t target.mp4 --debug (Y or N)
 ```
 
 - resize option makes images 32x32.
+
+# Similarity.py
+
+it will call a shell (need to be activated anaconda).
+
+it uses pretrained inception_cifar.py.
+
+
+```
+python Similarity.py -o fortest.mp4
+```
+
